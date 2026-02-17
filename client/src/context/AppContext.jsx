@@ -77,6 +77,7 @@ export const AppProvider = ({ children }) => {
         sessionCity,
         addSearchedCity,
         isOwner,
+        setIsOwner, 
         showHotelReg,
         setShowHotelReg,
       }}
