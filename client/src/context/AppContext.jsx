@@ -10,8 +10,8 @@ export const AppProvider = ({ children }) => {
   const { getToken } = useAuth();
   const { user } = useUser();
 
-  // Match backend port
-  axios.defaults.baseURL = "http://localhost:3000";
+  axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL;
+  axios.defaults.withCredentials = true;
 
   // ---------------- ROOMS ----------------
   const [rooms, setRooms] = useState([]);
@@ -28,7 +28,7 @@ export const AppProvider = ({ children }) => {
   const [isOwner, setIsOwner] = useState(false);
   const [showHotelReg, setShowHotelReg] = useState(false);
 
-  // ---------------- FETCH USER (NO RECENT CITY SETTING HERE) ----------------
+  // ---------------- FETCH USER ----------------
   const fetchUserData = async () => {
     try {
       const token = await getToken();
@@ -41,7 +41,10 @@ export const AppProvider = ({ children }) => {
         setIsOwner(data.isOwner);
       }
     } catch (error) {
-      console.log("User fetch error:", error.message);
+      console.log(
+        "User fetch error:",
+        error.response?.data || error.message
+      );
     }
   };
 
@@ -58,7 +61,10 @@ export const AppProvider = ({ children }) => {
         setRooms(data.rooms);
       }
     } catch (error) {
-      console.log("Room fetch error:", error.message);
+      console.log(
+        "Room fetch error:",
+        error.response?.data || error.message
+      );
     }
   };
 
@@ -77,7 +83,7 @@ export const AppProvider = ({ children }) => {
         sessionCity,
         addSearchedCity,
         isOwner,
-        setIsOwner, 
+        setIsOwner,
         showHotelReg,
         setShowHotelReg,
       }}
