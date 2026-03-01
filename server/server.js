@@ -10,26 +10,46 @@ import connectCloudinary from "./config/cloudinary.js";
 import roomRouter from "./routes/roomRoutes.js";
 import bookingRouter from "./routes/bookingRoutes.js";
 
-// Connect Database & Cloudinary
+// ===============================
+// CONNECT DATABASE & CLOUDINARY
+// ===============================
 connectDB();
 connectCloudinary();
 
 const app = express();
 
-// CORS (important for production frontend URL)
+// ===============================
+// CORS CONFIG (PRODUCTION SAFE)
+// ===============================
+const allowedOrigins = [
+  "http://localhost:5173", // Local Vite dev
+  "https://staymatrix.vercel.app", // Production frontend
+];
+
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "*",
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
 
+// Handle preflight requests
+app.options("*", cors());
+
 // ===============================
-// CLERK WEBHOOK (MUST BE FIRST)
+// CLERK WEBHOOK (MUST BE BEFORE express.json())
 // ===============================
 app.post(
   "/api/clerk",
-  express.raw({ type: "application/json" }), // MUST be raw
+  express.raw({ type: "application/json" }),
   clerkWebhooks
 );
 
@@ -42,7 +62,9 @@ app.use(clerkMiddleware());
 // ===============================
 // ROUTES
 // ===============================
-app.get("/", (req, res) => res.send("API is working"));
+app.get("/", (req, res) => {
+  res.send("🚀 StayMatrix API is working");
+});
 
 app.use("/api/user", userRouter);
 app.use("/api/hotels", hotelRouter);
@@ -50,15 +72,29 @@ app.use("/api/rooms", roomRouter);
 app.use("/api/bookings", bookingRouter);
 
 // ===============================
-// GLOBAL ERROR HANDLER
+// 404 HANDLER
 // ===============================
-app.use((err, req, res, next) => {
-  console.error("Server Error:", err);
-  res.status(500).json({ success: false, message: "Internal Server Error" });
+app.use((req, res) => {
+  res.status(404).json({
+    success: false,
+    message: "Route not found",
+  });
 });
 
 // ===============================
-// SERVER LISTEN
+// GLOBAL ERROR HANDLER
+// ===============================
+app.use((err, req, res, next) => {
+  console.error("❌ Server Error:", err.message);
+
+  res.status(500).json({
+    success: false,
+    message: err.message || "Internal Server Error",
+  });
+});
+
+// ===============================
+// START SERVER
 // ===============================
 const PORT = process.env.PORT || 3000;
 
