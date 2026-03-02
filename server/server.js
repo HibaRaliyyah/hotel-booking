@@ -41,9 +41,6 @@ app.use(
   })
 );
 
-// Handle preflight requests
-app.options("*", cors());
-
 // ===============================
 // CLERK WEBHOOK (MUST BE BEFORE express.json())
 // ===============================
