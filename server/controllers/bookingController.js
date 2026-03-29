@@ -9,8 +9,8 @@ const checkAvailability = async ({ checkInDate, checkOutDate, room }) => {
   try {
     const bookings = await Booking.find({
       room,
-      checkIndate: { $lte: new Date(checkOutDate) },
-      checkOutdate: { $gte: new Date(checkInDate) },
+      checkInDate: { $lte: new Date(checkOutDate) },
+      checkOutDate: { $gte: new Date(checkInDate) },
     });
 
     return bookings.length === 0;
