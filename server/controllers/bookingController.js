@@ -96,8 +96,8 @@ export const createBooking = async (req, res) => {
       room,
       hotel: roomData.hotel._id,
       guests: Number(guests),
-      checkIndate: checkIn,
-      checkOutdate: checkOut,
+      checkInDate: checkIn,
+      checkOutDate: checkOut,
       totalPrice,
       paymentMethod,
     });
