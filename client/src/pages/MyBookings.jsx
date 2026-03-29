@@ -112,14 +112,14 @@ const MyBookings = () => {
               <div>
                 <p>Check-In:</p>
                 <p className='text-gray-500 text-sm'>
-                  {formatDate(booking?.checkInDate)}
+                  {formatDate(booking?.checkInDate || booking?.checkIndate)}
                 </p>
               </div>
 
               <div>
                 <p>Check-Out:</p>
                 <p className='text-gray-500 text-sm'>
-                  {formatDate(booking?.checkOutDate)}
+                  {formatDate(booking?.checkOutDate || booking?.checkOutdate)}
                 </p>
               </div>
 
