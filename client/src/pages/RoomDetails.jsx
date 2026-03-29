@@ -43,27 +43,45 @@ const RoomDetails = () => {
 
     //onSubmitHandler function to check availability & book the room
     const onSubmitHandler = async (e) => {
-        try {
-            e.preventDefault();
-            if (!isAvailable) {
-                return checkAvailability();
-            } else {
-                const { data } = await axios.post('/api/bookings/book', { room: id, checkInDate, checkOutDate, guests, paymentMethod: "pay At Hotel" }, { headers: { Authorization: `Bearer ${await getToken()}` } })
-                if (data.success) {
-                    toast.success(data.message);
+    try {
+        e.preventDefault();
 
-                    setTimeout(() => {
-                        navigate('/my-bookings');
-                        scrollTo(0, 0);
-                    }, 1500);
-                } else {
-                    toast.error(data.message);
-                }
-            }
-        } catch (error) {
-            toast.error(error.message)
+        if (!isAvailable) {
+            return checkAvailability();
         }
+
+        const token = await getToken();
+
+        const { data } = await axios.post(
+            '/api/bookings/book',
+            {
+                room: id,
+                checkInDate: new Date(checkInDate).toISOString(),
+                checkOutDate: new Date(checkOutDate).toISOString(),
+                guests,
+                paymentMethod: "Pay At Hotel"
+            },
+            {
+                headers: { Authorization: `Bearer ${token}` }
+            }
+        );
+
+        if (data.success) {
+            toast.success(data.message);
+
+            setTimeout(() => {
+                navigate('/my-bookings');
+                scrollTo(0, 0);
+            }, 1500);
+
+        } else {
+            toast.error(data.message);
+        }
+
+    } catch (error) {
+        toast.error(error.response?.data?.message || error.message);
     }
+};
 
     useEffect(() => {
         const room = rooms.find(room => room._id === id)
