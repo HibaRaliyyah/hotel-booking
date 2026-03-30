@@ -1,5 +1,5 @@
 import stripe from "stripe";
-import Booking from "../models/Booking";
+import Booking from "../models/Booking.js";
 
 // API to handle Stripe Webhooks
 
