@@ -1,6 +1,6 @@
 # Staymatrix - Hotel Booking Platform
 
-![Staymatrix Hotel Booking Interface](https://github.com/HibaRaliyyah/hotel-booking/assets/187739079/staymatrix-interface.png)
+<img width="1358" height="610" alt="staymatrix" src="https://github.com/user-attachments/assets/f5ef6abf-e89d-456e-b2a0-7c80ee1b23d2" />
 
 ## About the Project
 
@@ -10,13 +10,13 @@ Live Demo: https://staymatrix.vercel.app
 
 ## Features
 
-✨ **Core Features:**
-- 🏨 Browse and search hotels by destination
-- 📅 Check-in and check-out date selection
-- 👥 Guest count management
-- 🔍 Advanced search functionality
-- 💎 Luxury hotel listings and experiences
-- 🎯 Personalized travel recommendations
+**Core Features:**
+- Browse and search hotels by destination
+- Check-in and check-out date selection
+- Guest count management
+- Advanced search functionality
+- Luxury hotel listings and experiences
+- Personalized travel recommendations
 
 ## Technology Stack
 
@@ -29,18 +29,6 @@ Live Demo: https://staymatrix.vercel.app
 - **Frontend Framework**: React.js
 - **Deployment**: Vercel
 - **Package Manager**: npm/yarn
-
-## Repository Statistics
-
-| Metric | Value |
-|--------|-------|
-| Repository ID | 1117996701 |
-| Language | JavaScript |
-| Default Branch | master |
-| Created | December 17, 2025 |
-| Visibility | Private |
-| Repository Size | 2.9 KB |
-| Open Issues | 0 |
 
 ## Project Structure
 
