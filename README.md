@@ -6,7 +6,8 @@
 
 **Staymatrix** is a modern hotel booking platform designed to provide users with an exceptional travel experience. The platform allows discerning travelers to discover world-class accommodations, breathtaking destinations, and unforgettable stays tailored to their preferences.
 
-Live Demo: https://staymatrix.vercel.app
+## Link: 
+https://staymatrix.vercel.app
 
 ## Features
 
@@ -73,58 +74,6 @@ npm start
 3. **Specify Guests**: Select the number of guests
 4. **Browse Results**: Explore available hotels and their details
 5. **Book Your Stay**: Complete the booking process
-
-## Key Pages
-
-- **Home**: Landing page with search functionality
-- **Hotels**: Browse all available hotel listings
-- **Experience**: Featured luxury experiences and packages
-- **About**: Information about Staymatrix and the team
-
-## Deployment
-
-The project is deployed on **Vercel** and can be accessed at:
-🔗 https://staymatrix.vercel.app
-
-## Repository Configuration
-
-- **Merge Options**: Supports merge commits, rebase, and squash merging
-- **Branch Protection**: Configured for safe deployments
-- **CI/CD**: Automated deployments on push to master branch
-
-## User Interface
-
-The platform features:
-- **Modern Design**: Clean, contemporary UI with a luxurious aesthetic
-- **Gradient Background**: Elegant purple-to-pink gradient
-- **Navigation Menu**: Easy access to Home, Hotels, Experience, and About sections
-- **Responsive Layout**: Optimized for desktop and mobile devices
-- **Search Bar**: Intuitive booking search with multiple filters
-
-## Future Enhancements
-
-- [ ] User authentication and account management
-- [ ] Payment gateway integration
-- [ ] Booking history and wishlist features
-- [ ] User reviews and ratings
-- [ ] Mobile app development
-- [ ] Multi-language support
-
-## Contributing
-
-This is a private repository. For contribution inquiries, please contact the repository owner.
-
-## License
-
-No license specified. Contact the repository owner for licensing information.
-
-## Author
-
-**HibaRaliyyah**
-- GitHub: [@HibaRaliyyah](https://github.com/HibaRaliyyah)
-- Repository: [hotel-booking](https://github.com/HibaRaliyyah/hotel-booking)
-
----
 
 **Last Updated**: April 21, 2026
 
