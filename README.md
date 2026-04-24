@@ -74,7 +74,3 @@ npm start
 3. **Specify Guests**: Select the number of guests
 4. **Browse Results**: Explore available hotels and their details
 5. **Book Your Stay**: Complete the booking process
-
-**Last Updated**: April 21, 2026
-
-*Experience Luxury Beyond Expectations* ✨
