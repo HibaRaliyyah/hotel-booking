@@ -11,7 +11,7 @@ import bookingRouter from "./routes/bookingRoutes.js";
 import { stripeWebhooks } from "./controllers/stripeWebhooks.js";
 
 // ===============================
-// CONNECT DATABASE & CLOUDINARY
+// CONNECT DATABASE & CLOUDINARY (New Relic Monitored)
 // ===============================
 connectDB();
 connectCloudinary();
