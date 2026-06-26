@@ -127,12 +127,9 @@ export const createBooking = async (req, res) => {
         `,
       };
 
-      await transporter.sendMail(mailOptions);
-
-    } catch (emailError) {
-      console.log("Email Error:", emailError.message);
-      // Email failure will NOT stop booking
-    }
+      transporter.sendMail(mailOptions).catch((emailError) => {
+        console.log("Email Error:", emailError.message);
+      });
 
     res.json({
       success: true,

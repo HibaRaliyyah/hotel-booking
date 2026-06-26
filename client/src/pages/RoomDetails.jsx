@@ -13,6 +13,7 @@ const RoomDetails = () => {
     const [checkInDate, setCheckInDate] = useState(null);
     const [checkOutDate, setCheckOutDate] = useState(null);
     const [guests, setGuests] = useState(1);
+    const [loading, setLoading] = useState(false);
 
     const [isAvailable, setIsAvailable] = useState(false);
 
@@ -50,6 +51,7 @@ const RoomDetails = () => {
             return checkAvailability();
         }
 
+        setLoading(true);
         const token = await getToken();
 
         const { data } = await axios.post(
@@ -80,6 +82,8 @@ const RoomDetails = () => {
 
     } catch (error) {
         toast.error(error.response?.data?.message || error.message);
+    } finally {
+        setLoading(false);
     }
 };
 
@@ -154,7 +158,9 @@ const RoomDetails = () => {
                     </div>
 
                 </div>
-                <button type='submit' className='bg-primary hover:bg-primary-dull active:scale-95 transition-all text-white rounded-md max-md:w-full max-md:mt-6 md:px-25 py-3 md:py-4 text-base cursor-pointer'>{isAvailable ? 'Book Now' : 'Check Availability'}</button>
+                <button disabled={loading} type='submit' className={`bg-primary hover:bg-primary-dull active:scale-95 transition-all text-white rounded-md max-md:w-full max-md:mt-6 md:px-25 py-3 md:py-4 text-base cursor-pointer ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}>
+                    {loading ? 'Processing...' : isAvailable ? 'Book Now' : 'Check Availability'}
+                </button>
             </form>
             {/* Common Specifications */}
             <div className='mt-25 space-y-4'>
